@@ -36,6 +36,14 @@ class EmployeeController extends Controller
 		
     }
 
+     public function ChangeStatus(Request $request){
+        $status = $request->change_status;
+        $tasks_id = $request->tasks_id;
+         DB::table('tasks')->where('tasks_id',$tasks_id)->update(['status'=>$status]);
+
+        return redirect()->back();
+    }
+
     public function TasksPage(){
       $tasks = DB::table('tasks')->where('employee_id',Session::get('emp_id'))->get();
 
