@@ -25,7 +25,7 @@
     <tr>
       <th class="px-4 py-2">Id</th>
       <th class="px-4 py-2">To Do</th>
-      <!-- <th class="px-4 py-2">Action</th> -->
+      <th class="px-4 py-2">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +36,17 @@
     <tr>
       <td class="px-4 py-2">{{ $i++  }}</td>
       <td class="px-4 py-2">{{$row->tasks_name}}</td>
+         <form action="{{url('change-status')}}" method="post">
+        @csrf
+      <td class="px-4 py-2">
+        <input type="hidden" name="tasks_id" value="{{$row->tasks_id}}">
+        <select name="change_status" onchange="this.form.submit()" id="change_status">
+          <option value="">-Select Status-</option>
+          <option value="In-progress" <?php if($row->status == 'In-progress') {echo 'selected'; } ?> >In-Progress</option>
+          <option value="completed" <?php if($row->status == 'completed') {echo 'selected'; } ?> >Completed</option>
+        </select>
+      </td>
+      </form>
       
     </tr>
     @endforeach
