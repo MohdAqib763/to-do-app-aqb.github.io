@@ -34,5 +34,7 @@ Route::get('/emp-logout','EmployeeController@Logout');
 
 Route::post('/emp-login-post','EmployeeController@Login');
 Route::get('/emp_tasks','EmployeeController@TasksPage');
+Route::post('/change-status','EmployeeController@ChangeStatus');
+
 
 
